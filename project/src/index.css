@@ -1,0 +1,80 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Leaflet specific styles */
+@import 'leaflet/dist/leaflet.css';
+@import 'leaflet-draw/dist/leaflet.draw.css';
+
+@layer base {
+  :root {
+    --leaflet-tile-filter: brightness(0.95) contrast(1.1);
+  }
+}
+
+/* Leaflet container styles */
+.leaflet-container {
+  width: 100%;
+  height: 100%;
+}
+
+.leaflet-tile {
+  filter: var(--leaflet-tile-filter);
+}
+
+.leaflet-control-zoom {
+  @apply shadow-lg;
+}
+
+.leaflet-popup-content-wrapper {
+  @apply rounded-lg shadow-xl;
+}
+
+.leaflet-popup-content {
+  @apply m-0 p-4;
+}
+
+/* Fix Leaflet default icon paths */
+.leaflet-default-icon-path {
+  background-image: url('https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.7.1/images/marker-icon.png');
+}
+
+.leaflet-default-shadow-path {
+  background-image: url('https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.7.1/images/marker-shadow.png');
+}
+
+/* Leaflet Draw styles */
+.leaflet-draw-toolbar a {
+  @apply bg-white;
+}
+
+.leaflet-draw-toolbar a:hover {
+  @apply bg-gray-100;
+}
+
+.leaflet-draw-actions {
+  @apply bg-white shadow-lg rounded-md;
+}
+
+.leaflet-draw-actions a {
+  @apply text-gray-700 hover:bg-gray-100;
+}
+
+/* Map Controls Animation */
+.map-controls-enter {
+  transform: translateX(-100%);
+}
+
+.map-controls-enter-active {
+  transform: translateX(0);
+  transition: transform 300ms ease-in-out;
+}
+
+.map-controls-exit {
+  transform: translateX(0);
+}
+
+.map-controls-exit-active {
+  transform: translateX(-100%);
+  transition: transform 300ms ease-in-out;
+}
